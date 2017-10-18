@@ -1,0 +1,24 @@
+.contacts-address {
+  @include clear-list();
+
+  li {
+    margin-bottom: 1rem;
+  }
+
+  b {
+    display: block;
+    font-weight: 700;
+    font-size: rem(18);
+    font-family: $secondary-font;
+  }
+
+  span {
+    display: block;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+    border-bottom: none;
+  }
+}

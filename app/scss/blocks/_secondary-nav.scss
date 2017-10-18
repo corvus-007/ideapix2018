@@ -1,0 +1,25 @@
+.secondary-nav {
+  margin-top: 10%;
+}
+
+.secondary-nav__list {
+  @include clear-list();
+
+  li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: $dark-color;
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color $duration;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+    }
+  }
+}

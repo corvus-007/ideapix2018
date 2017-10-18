@@ -1,0 +1,47 @@
+@import "variables";
+@import "functions";
+@import "mixins";
+
+@import "normalize";
+
+// Global
+@import "global/fonts";
+@import "global/grid";
+@import "global/base";
+@import "global/layout";
+
+// Vendors
+@import "vendors/slick";
+@import "vendors/jquery.fancybox.min";
+@import "vendors/aos";
+
+// Blocks
+@import "blocks/icon";
+@import "blocks/button";
+@import "blocks/form";
+@import "blocks/table";
+@import "blocks/popup";
+@import "blocks/section";
+@import "blocks/custom-ol";
+@import "blocks/custom-ul";
+@import "blocks/main-header";
+@import "blocks/nav-toggler";
+@import "blocks/hamburger-menu";
+@import "blocks/main-footer";
+@import "blocks/socials";
+@import "blocks/favorit-works";
+@import "blocks/favorit-work-slide";
+@import "blocks/mission";
+@import "blocks/clients";
+@import "blocks/format-content";
+@import "blocks/page";
+@import "blocks/project-head";
+@import "blocks/project-section";
+@import "blocks/archive-events";
+@import "blocks/site-cover";
+@import "blocks/main-nav";
+@import "blocks/secondary-nav";
+@import "blocks/contacts";
+@import "blocks/contacts-details";
+@import "blocks/contacts-address";
+@import "blocks/amocrm";

@@ -1,0 +1,45 @@
+.nav-toggler {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  font-weight: 800;
+  font-size: 0;
+  line-height: normal;
+  font-family: $secondary-font;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: $white-color;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-sizing: border-box;
+  user-select: none;
+  cursor: pointer;
+
+  @include mq-min(568px) {
+    padding: 8px 5px;
+    padding-right: 55px;
+    font-size: rem(13);
+  }
+}
+
+.nav-toggler__icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-left: 0.25em;
+  fill: currentColor;
+  transition: $duration;
+
+  &--hidden {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+
+  @include mq-min(568px) {
+    top: 1px;
+    right: 8px;
+  }
+}

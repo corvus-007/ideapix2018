@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <title>Главная</title>
+  <link rel="stylesheet" href="https://forms.amocrm.ru/forms/assets/css/v2/iframe_extended.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="home">
+  <!-- <div class="site-wrapper"> -->
+    @@include('blocks/main-header.html')
+
+    <section class="section favorit-works">
+      <header class="section__header favorit-works__header">
+        <div class="container">
+          <span class="section__label">Избранные работы</span>
+        </div>
+      </header>
+      <div class="favorit-works__slider">
+        <div class="favorit-works__slider-item favorit-work-slide favorit-work-slide--white" style="background-image: url(https://images.unsplash.com/photo-1468127225977-85bc4aa3fe0f?dpr=1&auto=compress,format&fit=crop&w=2002&h=&q=80&cs=tinysrgb&crop=);">
+          <div class="favorit-work-slide__inner container">
+            <h3 class="favorit-work-slide__title">Гринвуд</h3>
+            <div class="favorit-work-slide__content">
+              <div class="favorit-work-slide__text">
+                <p>Клубный квартал, которому нет равных в своей отрасли, получил идеальный сайт для своих целей</p>
+              </div>
+              <a class="favorit-work-slide__button" href="#">Посмотреть кейс</a>
+            </div>
+          </div>
+        </div>
+        <div class="favorit-works__slider-item favorit-work-slide favorit-work-slide--black" style="background-image: url(https://images.unsplash.com/photo-1425421669292-0c3da3b8f529?dpr=1&auto=compress,format&fit=crop&w=1949&h=&q=80&cs=tinysrgb&crop=);">
+          <div class="favorit-work-slide__inner container">
+            <h3 class="favorit-work-slide__title">Невструев</h3>
+            <div class="favorit-work-slide__content">
+              <div class="favorit-work-slide__text">
+                <p>Сайт для депутата Брянской городской Думы – Алексея Валерьевича Невструева</p>
+              </div>
+              <a class="favorit-work-slide__button" href="#">Посмотреть кейс</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="favorit-works__controls">
+        <div class="favorit-works__pager">
+          <span class="favorit-works__pager-number favorit-works__pager-number--current"></span>
+          <span class="favorit-works__pager-number favorit-works__pager-number--all"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mission">
+      <header class="section__header">
+        <div class="container">
+          <span class="section__label">Что мы вообще делаем</span>
+          <h2 class="section__title">Разрабатываем проекты, которые приводят клиентов</h2>
+        </div>
+      </header>
+      <div class="container">
+        <ol class="mission__list">
+          <li class="mission__item">
+            Презентация продукции, услуги или компании на WOW-уровне
+          </li>
+          <li class="mission__item">
+            Поддержка имиджа, позиционирование бренда, отстройка от конкурентов
+          </li>
+          <li class="mission__item">
+            Повышение продаж за счет увеличения конверсии
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section clients">
+      <header class="section__header">
+        <div class="container">
+          <span class="section__label">Некоторые клиенты</span>
+        </div>
+      </header>
+      <div class="clients__list-wrapper">
+        <ul class="clients__list">
+          <li class="clients__item">
+            <a class="clients__link" href="#">
+              <img class="clients__picture" src="http://placehold.it/300x180/2A363B/fff" srcset="http://placehold.it/600x360/2A363B/fff 2x" alt="">
+            </a>
+          </li>
+          <li class="clients__item">
+            <a class="clients__link" href="#">
+              <img class="clients__picture" src="http://placehold.it/300x180/F38181/fff" srcset="http://placehold.it/600x360/F38181/fff 2x" alt="">
+            </a>
+          </li>
+          <li class="clients__item">
+            <a class="clients__link" href="#">
+              <img class="clients__picture" src="http://placehold.it/300x180/08D9D6/fff" srcset="http://placehold.it/600x360/08D9D6/fff 2x" alt="">
+            </a>
+          </li>
+          <li class="clients__item">
+            <a class="clients__link" href="#">
+              <img class="clients__picture" src="http://placehold.it/300x180/364F6B/fff" srcset="http://placehold.it/600x360/364F6B/fff 2x" alt="">
+            </a>
+          </li>
+          <li class="clients__item">
+            <a class="clients__link" href="#">
+              <img class="clients__picture" src="http://placehold.it/300x180/00B8A9/fff" srcset="http://placehold.it/600x360/00B8A9/fff 2x" alt="">
+            </a>
+          </li>
+          <li class="clients__item">
+            <a class="clients__link" href="#">
+              <img class="clients__picture" src="http://placehold.it/300x180/48466D/fff" srcset="http://placehold.it/600x360/48466D/fff 2x" alt="">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section contacts">
+      <header class="section__header">
+        <div class="container">
+          <span class="section__label">Познакомимся?</span>
+          <h2 class="section__title">Давайте поработаем вместе и сделаем отличный digital-продукт</h2>
+        </div>
+      </header>
+      <div class="contacts-details container">
+        <div class="contacts-details__item" itemscope itemtype="http://schema.org/Organization">
+          <meta itemprop="name" content="Ideapix">
+          <b class="contacts-details__caption">Офис</b>
+          <ul class="contacts-address">
+            <li itemscope itemtype="http://schema.org/PostalAddress" itemprop="address">
+              <b itemprop="addressLocality">Москва:</b>
+              <span>тел. <a href="tel:+7 (499) 322 80 92" itemprop="telephone">+7 (499) 322 80 92</a></span>
+            </li>
+            <li itemscope itemtype="http://schema.org/PostalAddress" itemprop="address">
+              <b itemprop="addressLocality">Брянск:</b>
+              <span>тел. <a href="tel:+7 (915) 8000 300" itemprop="telephone">+7 (915) 8000 300</a></span>
+              <span itemprop="streetAddress">ул. Дуки, д. 69, оф. 409</span>
+              <span itemscope itemtype="http://www.schema.org/GeoCoordinates">
+                <meta itemprop="latitude" content="53.266271">
+                <meta itemprop="longitude" content="34.355737">
+              </span>
+            </li>
+            <li itemscope itemtype="http://schema.org/PostalAddress" itemprop="address">
+              <b itemprop="addressLocality">Бузулук:</b>
+              <span>тел. <a href="tel:+7 (922) 87-66-33-1" itemprop="telephone">+7 (922) 87-66-33-1</a></span>
+              <span itemprop="streetAddress">ул. Ленина, д. 23, оф. 12</span>
+              <span itemscope itemtype="http://www.schema.org/GeoCoordinates">
+                <meta itemprop="latitude" content="52.787076">
+                <meta itemprop="longitude" content="52.264677">
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="contacts-details__item">
+          <b class="contacts-details__caption">Оставить заявку</b>
+          <div class="contacts-details__text">
+            <p>Некогда звонить? Просто оставьте заявку, а мы свяжемся, когда вам будет удобно.</p>
+          </div>
+          <a class="contacts-details__button" data-fancybox href="#popup-callback">Напишите нам</a>
+        </div>
+        <div class="contacts-details__item">
+          <b class="contacts-details__caption">Скачать презентацию</b>
+          <div class="contacts-details__text">
+            <p>Посмотрите нашу презентацию, там есть примеры наших работ, стартовые цены и всё такое.</p>
+          </div>
+          <a class="contacts-details__button" href="#">Скачать PDF</a>
+        </div>
+      </div>
+    </section>
+
+
+    @@include('blocks/main-footer.html')
+    @@include('blocks/popup-callback.html')
+    @@include('blocks/site-cover.html')
+  <!-- </div> -->
+  @@include('blocks/site-scripts.html')
+</body>
+</html>

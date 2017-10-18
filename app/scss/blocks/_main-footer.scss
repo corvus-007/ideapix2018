@@ -1,0 +1,28 @@
+.main-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  mix-blend-mode: difference;
+
+  @include mq-max(767px) {
+    display: none;
+  }
+}
+
+.main-footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: rem(50);
+
+  & > * {
+    pointer-events: auto;
+  }
+}
+
+.main-footer__socials {
+  color: $white-color;
+}

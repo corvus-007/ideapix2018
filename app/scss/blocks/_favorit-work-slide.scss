@@ -1,0 +1,116 @@
+.favorit-work-slide {
+  position: relative;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  padding-top: rem(140);
+  padding-bottom: 6vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  background-color: #777;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.6;
+  }
+
+  &--white {
+    color: $black-color;
+    background-color: $white-color;
+
+    &::before {
+      background-image: linear-gradient(to top, $white-color, rgba($black-color, 0));
+    }
+  }
+
+  &--black {
+    color: $white-color;
+    background-color: $black-color;
+
+    &::before {
+      background-image: linear-gradient(to top, $black-color, rgba($black-color, 0));
+    }
+  }
+
+  @media (orientation: portrait) {
+    padding-bottom: rem(140);
+  }
+
+  @include mq-min(768px) {
+    padding-bottom: calc(11vh + 2rem);
+  }
+}
+
+.favorit-work-slide__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-top: 2vh;
+  box-sizing: border-box;
+
+  @include mq-min(768px) {
+    padding-top: 0;
+    box-sizing: content-box;
+  }
+}
+
+.favorit-work-slide__title {
+  margin: 0;
+  margin-bottom: 5vmin;
+  font-weight: 800;
+  font-size: rem(70);
+  line-height: normal;
+  margin-left: -0.06em;
+
+  @include mq-min(568px) {
+    font-size: rem(90);
+  }
+
+  @include mq-min(768px) {
+    margin-bottom: 2rem;
+    font-size: rem(160);
+  }
+
+  @include mq-min(1124px) {
+    font-size: rem(200);
+  }
+}
+
+.favorit-work-slide__content {
+  @include mq-min(768px) {
+    width: 50%;
+  }
+
+  @include mq-min(1124px) {
+    width: calc(100% / 3);
+  }
+}
+
+.favorit-work-slide__text {
+  margin-bottom: 2rem;
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.favorit-work-slide__button {
+  @include make-button();
+}
+
+.favorit-work-slide--white .favorit-work-slide__button {
+  @include --button-black();
+}
+
+.favorit-work-slide--black .favorit-work-slide__button {
+  @include --button-white();
+}

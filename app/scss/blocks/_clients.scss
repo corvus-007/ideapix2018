@@ -1,0 +1,32 @@
+.clients {
+  padding-top: 0;
+  // overflow: hidden;
+}
+
+.clients__list-wrapper {
+  width: 100%;
+  overflow: hidden;
+
+  &--scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.clients__list {
+  @include clear-list();
+
+  display: flex;
+  // justify-content: space-between;
+  transform-origin: 0;
+  will-change: transform;
+}
+
+.clients__item {
+  flex-shrink: 0;
+  margin-right: 4rem;
+
+  &:first-child {
+    margin-left: 4rem;
+  }
+}

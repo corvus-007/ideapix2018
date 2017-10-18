@@ -1,0 +1,41 @@
+.main-nav {
+
+}
+
+.main-nav__list {
+  @include clear-list();
+
+  li {
+    margin-bottom: 0vh;
+    font-weight: 600;
+    font-size: rem(50);
+    font-family: $secondary-font;
+    color: $dark-color;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  a {
+    color: currentColor;
+    text-decoration: none;
+    border-bottom: none;
+    transition: color $duration;
+
+    &:hover,
+    &:focus {
+      color: $accent-color;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    li {
+      font-size: 54px;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 64px;
+  }
+}

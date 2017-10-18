@@ -1,0 +1,150 @@
+.favorit-works {
+  position: relative;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: color ($duration * 2);
+  height: 100%;
+
+  &--white {
+    color: $black-color;
+  }
+
+  &--black {
+    color: $white-color;
+  }
+}
+
+.favorit-works__header {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: rem(140);
+  right: 0;
+  pointer-events: none;
+}
+
+.favorit-works__slider {
+  height: 100%;
+
+  .slick-list,
+  .slick-track,
+  .slick-slide,
+  .slick-slide > div {
+    height: 100%;
+  }
+}
+
+.favorit-works__controls {
+  position: absolute;
+  right: 0;
+  bottom: rem(37);
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white-color;
+  transition: color ($duration * 2);
+  // mix-blend-mode: difference;
+
+  .slick-arrow {
+    position: relative;
+    font-size: 0;
+    width: rem(110);
+    height: 1.5rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    color: currentColor;
+    cursor: pointer;
+    border: none;
+    background: none;
+    background-clip: content-box;
+    outline: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      margin: auto;
+      background-color: currentColor;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      transform: rotate(-45deg);
+      width: 6px;
+      height: 6px;
+      margin: auto;
+      background-color: currentColor;
+    }
+  }
+
+  .slick-prev {
+    &::after {
+      left: 0;
+    }
+  }
+
+  .slick-next {
+    &::after {
+      right: 0;
+    }
+  }
+}
+
+.favorit-works--white .favorit-works__controls {
+  color: $black-color;
+}
+
+.favorit-works--black .favorit-works__controls {
+  color: $white-color;
+}
+
+.favorit-works__pager {
+  position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  font-size: rem(18);
+  font-weight: 900;
+  color: currentColor;
+
+  &::before {
+    content: "";
+    display: block;
+    padding: rem(24);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    margin: auto;
+    background-color: currentColor;
+    transform: rotate(-45deg) scaleX(1.3);
+  }
+}
+
+.favorit-works__pager-number {
+  position: absolute;
+}
+
+.favorit-works__pager-number--current {
+  top: 0;
+  left: 0;
+}
+
+.favorit-works__pager-number--all {
+  right: 0;
+  bottom: 0;
+}

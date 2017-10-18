@@ -1,0 +1,67 @@
+/* amocrm */
+
+#amofroms_main_wrapper {
+  width: auto !important;
+  max-width: none;
+  margin: auto !important;
+  font-family: $primary-font;
+}
+
+.amoforms__fields__editor-withoutborders .amoforms__fields__container {
+  max-width: none;
+  margin: auto;
+}
+
+.amoforms__field__name {
+  font-family: $secondary-font;
+  font-size: 1.2rem;
+}
+
+.amoforms__field__name label {
+  height: auto !important;
+}
+
+.amoforms__field__control_birthday, .amoforms__field__control_date, .amoforms__field__control_multitext, .amoforms__field__control_numeric, .amoforms__field__control_smart_address_input, .amoforms__field__control_text, .amoforms__field__control_url {
+  padding: 0;
+  border: none;
+  height: auto;
+}
+
+.amoforms__field__control_birthday .text-input, .amoforms__field__control_date .text-input, .amoforms__field__control_multitext .text-input, .amoforms__field__control_numeric .text-input, .amoforms__field__control_smart_address_input .text-input, .amoforms__field__control_text .text-input, .amoforms__field__control_url .text-input {
+  padding: em(14, 18) em(24, 18);
+  width: 100%;
+  outline: none;
+  border: 2px solid transparent;
+  background: #edeef1;
+  font: inherit;
+  font-size: rem(18);
+  line-height: normal;
+  font-family: $secondary-font;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+.amoforms__field__control_birthday .text-input:hover, .amoforms__field__control_date .text-input:hover, .amoforms__field__control_multitext .text-input:hover, .amoforms__field__control_numeric .text-input:hover, .amoforms__field__control_smart_address_input .text-input:hover, .amoforms__field__control_text .text-input:hover, .amoforms__field__control_url .text-input:hover {
+  background: #f9f9f9;
+}
+
+.amoforms__field__control_birthday .text-input:focus, .amoforms__field__control_date .text-input:focus, .amoforms__field__control_multitext .text-input:focus, .amoforms__field__control_numeric .text-input:focus, .amoforms__field__control_smart_address_input .text-input:focus, .amoforms__field__control_text .text-input:focus, .amoforms__field__control_url .text-input:focus {
+  background: #fff;
+  border-color: $black-color;
+}
+
+.amoforms__fields__submit {
+  margin-top: 1rem;
+}
+
+.amoforms__fields__submit .amoforms__submit-button {
+  @include make-button();
+  @include --button-black();
+
+  width: 100%;
+  max-width: none;
+}
+
+.amoforms__fields__container .amoforms__textarea_paragraph {
+  font-size: 0.8rem;
+}
