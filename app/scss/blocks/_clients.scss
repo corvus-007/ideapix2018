@@ -5,6 +5,7 @@
 
 .clients__list-wrapper {
   width: 100%;
+  box-sizing: border-box;
   overflow: hidden;
 
   &--scroll {
@@ -17,16 +18,16 @@
   @include clear-list();
 
   display: flex;
-  // justify-content: space-between;
+  justify-content: space-between;
   transform-origin: 0;
   will-change: transform;
 }
 
 .clients__item {
   flex-shrink: 0;
-  margin-right: 4rem;
+  margin-right: 50px;
 
   &:first-child {
-    margin-left: 4rem;
+    margin-left: 50px;
   }
 }

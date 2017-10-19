@@ -7,7 +7,7 @@
 
   li {
     margin-bottom: 0vh;
-    font-weight: 600;
+    font-weight: 800;
     font-size: rem(50);
     font-family: $secondary-font;
     color: $dark-color;
@@ -31,11 +31,11 @@
 
   @include media-breakpoint-up(sm) {
     li {
-      font-size: 54px;
+      font-size: rem(54);
     }
   }
 
   @include media-breakpoint-up(md) {
-    font-size: 64px;
+    font-size: rem(64);
   }
 }

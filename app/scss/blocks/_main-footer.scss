@@ -26,3 +26,27 @@
 .main-footer__socials {
   color: $white-color;
 }
+
+
+.main-footer__nav {
+
+}
+
+.main-footer__nav-list {
+  @include clear-list();
+
+  font-size: rem(13);
+  font-family: $secondary-font;
+  text-transform: uppercase;
+
+  li {
+
+  }
+
+  a {
+    color: $white-color;
+    text-decoration: none;
+    border-bottom: none;
+    letter-spacing: 0.1em;
+  }
+}

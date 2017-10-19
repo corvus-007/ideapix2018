@@ -14,6 +14,19 @@ body {
   color: $base-color;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+
+  // Для работы mix-blend-mode
+  &::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    z-index: -1;
+    pointer-events: none;
+  }
 }
 
 .no-scroll {

@@ -1,0 +1,83 @@
+.project-review {
+  margin-top: rem(50);
+  padding-top: rem(90);
+  padding-bottom: rem(90);
+  font-size: rem(15);
+  line-height: 1.6;
+  background-color: $secondary-color;
+  color: $white-color;
+}
+
+.project-review--inverse {
+}
+
+.project-review__inner {
+
+  @include mq-min(768px) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+.project-review__content {
+  margin-bottom: 2rem;
+
+  blockquote {
+    margin: 0;
+  }
+
+  @include mq-min(768px) {
+    margin-bottom: 0;
+    // width: calc(100% / 3 * 2);
+  }
+}
+
+
+.project-review--inverse blockquote {
+  color: #b4c4d1;
+}
+
+.project-review__aside {
+
+  &:empty {
+    display: none;
+  }
+
+  @include mq-min(768px) {
+    margin-top: rem(30);
+    width: calc(100% / 3 * 1);
+    margin-left: rem(45);
+  }
+
+  @include mq-min(1280px) {
+    margin-right: rem(45);
+  }
+}
+
+.project-review__origin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include mq-min(768px) {
+    &::before {
+      content: "";
+      margin-left: rem(-12);
+      width: rem(100);
+      height: rem(100);
+      margin-bottom: 2rem;
+      background: url("images/icon-pdf.svg") no-repeat center / contain;
+    }
+  }
+}
+
+.project-review__origin-link {
+  @include make-button();
+  @include --button-black();
+}
+
+.project-review--inverse .project-review__origin-link {
+  @include --button-white();
+}
