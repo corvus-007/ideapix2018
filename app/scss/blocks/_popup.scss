@@ -1,6 +1,5 @@
 .popup {
   max-width: 500px;
-  padding: ($grid-gutter-width);
 
   @include media-breakpoint-up(md) {
     padding: ($grid-gutter-width * 1.5);

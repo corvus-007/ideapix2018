@@ -44,7 +44,6 @@
 
     &::before {
       margin-top: rem(-70);
-      background-color: red;
     }
   }
 
@@ -84,6 +83,14 @@
 
   @media (min-height: 560px) {
     margin-top: 9vh;
+  }
+
+  @media (min-height: 800px) {
+    margin-top: 12vh;
+  }
+
+  @media (min-height: 900px) {
+    margin-top: 14vh;
   }
 
   @include mq-min(768px) {
