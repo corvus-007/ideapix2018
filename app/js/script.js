@@ -1,6 +1,6 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   svg4everybody();
 
   function isHasClass(classString) {
@@ -18,125 +18,85 @@ document.addEventListener('DOMContentLoaded', function () {
   var labelAnimation = animations.tweeen1;
   var titleAnimation = animations.tweeen1;
 
+  var tweenElements = function(config) {
+    var triggerSelector = config.triggerSelector;
+    var childrenSelectors = config.childrenSelectors;
+    var toggleClass = config.toggleClass;
+
+    var triggerBoxes = document.querySelectorAll(triggerSelector);
+
+    Array.from(triggerBoxes).forEach(function(triggerBox) {
+      var animateElements = triggerBox.querySelectorAll(childrenSelectors.join(', '));
+      var tl = new TimelineMax();
+
+      tl.staggerFrom(animateElements, 0.45, {
+        opacity: 0,
+        y: 100
+      }, 0.25);
+
+      var scene = new ScrollMagic.Scene({
+          triggerElement: triggerBox,
+          offset: SCENE_OFFSET
+        })
+        .setTween(tl)
+        .addTo(controller);
+
+      if (typeof toggleClass !== 'undefined') {
+        scene.setClassToggle(triggerSelector + '.' + toggleClass, toggleClass + '--triggered');
+      }
+
+      if ((location.hostname === 'localhost')) {
+        scene.addIndicators();
+      }
+    });
+
+
+  };
+
   if (isHasClass('home')) {
     var favoritWorksTween = new TimelineMax();
 
     favoritWorksTween
-        .from('.favorit-work-slide__title', 0.8, {
-          y: -80,
-          opacity: 0
-        }, '+=0.3')
-        .from('.favorit-work-slide__text', 0.6, {
-          y: 80,
-          opacity: 0,
-          ease: Back.easeOut.config(1.2)
-        }, '-=0.3')
-        .from('.favorit-work-slide__button', 0.6, {
-          y: 80,
-          opacity: 0,
-          ease: Back.easeOut.config(1.7)
-        }, '-=0.45');
+      .from('.favorit-work-slide__title', 0.8, {
+        y: -80,
+        opacity: 0
+      }, '+=0.3')
+      .from('.favorit-work-slide__text', 0.6, {
+        y: 80,
+        opacity: 0,
+        ease: Back.easeOut.config(1.2)
+      }, '-=0.3')
+      .from('.favorit-work-slide__button', 0.6, {
+        y: 80,
+        opacity: 0,
+        ease: Back.easeOut.config(1.7)
+      }, '-=0.45');
 
-    var tweenSectionFavoritWorks = function () {
-      var favoritWorks = document.querySelector('.favorit-works');
-      var label = favoritWorks.querySelector('.section__label');
 
-      var clientsTween = new TimelineMax();
-
-      clientsTween
-          .from(label, 0.4, labelAnimation)
-
-      var scene = new ScrollMagic.Scene({
-        triggerElement: favoritWorks,
-        offset: SCENE_OFFSET
-      })
-          .setTween(clientsTween)
-          .setClassToggle(label, 'section__label--triggered')
-          .addTo(controller);
-
-      if ((location.hostname === 'localhost')) {
-        scene.addIndicators();
-      }
-    };
-    var tweenSectionMission = function () {
-      var mission = document.querySelector('.mission');
-      var label = mission.querySelector('.section__label');
-      var title = mission.querySelector('.section__title');
-
-      var missionTween = new TimelineMax();
-
-      missionTween
-          .from(label, 0.4, labelAnimation)
-          .from(title, 0.4, titleAnimation)
-          .staggerFrom('.mission__item', 0.4, {opacity: 0, scale: 1.2, x: 80}, 0.15);
-
-      var scene = new ScrollMagic.Scene({
-        triggerElement: mission,
-        offset: SCENE_OFFSET
-      })
-          .setTween(missionTween)
-          .setClassToggle(label, 'section__label--triggered')
-          .addTo(controller);
-
-      if ((location.hostname === 'localhost')) {
-        scene.addIndicators();
-      }
-    };
-    var tweenSectionClients = function () {
-      var clients = document.querySelector('.clients');
-      var label = clients.querySelector('.section__label');
-
-      var clientsTween = new TimelineMax();
-
-      clientsTween
-          .from(label, 0.4, labelAnimation)
-          .staggerFrom('.clients__item', 0.4, {opacity: 0, y: 70}, 0.15);
-
-      var scene = new ScrollMagic.Scene({
-        triggerElement: clients,
-        offset: SCENE_OFFSET
-      })
-          .setTween(clientsTween)
-          .setClassToggle(label, 'section__label--triggered')
-          .addTo(controller);
-
-      if ((location.hostname === 'localhost')) {
-        scene.addIndicators();
-      }
-    };
-    var tweenSectionContacts = function () {
-      var contacts = document.querySelector('.contacts');
-      var label = contacts.querySelector('.section__label');
-      var title = contacts.querySelector('.section__title');
-
-      var clientsTween = new TimelineMax();
-
-      clientsTween
-          .from(label, 0.4, labelAnimation)
-          .from(title, 0.4, titleAnimation)
-          .staggerFrom('.contacts-details__item', 0.4, {opacity: 0, y: 50}, 0.15);
-
-      var scene = new ScrollMagic.Scene({
-        triggerElement: contacts,
-        offset: SCENE_OFFSET
-      })
-          .setTween(clientsTween)
-          .setClassToggle(label, 'section__label--triggered')
-          .addTo(controller);
-
-      if ((location.hostname === 'localhost')) {
-        scene.addIndicators();
-      }
-    };
-
-    tweenSectionFavoritWorks();
-    tweenSectionMission();
-    tweenSectionClients();
-    tweenSectionContacts();
+    tweenElements({
+      triggerSelector: '.favorit-works',
+      childrenSelectors: ['.section__label'],
+      toggleClass: 'section'
+    });
+    tweenElements({
+      triggerSelector: '.mission',
+      childrenSelectors: ['.section__label', '.section__title', 'li', 'p'],
+      toggleClass: 'section'
+    });
+    tweenElements({
+      triggerSelector: '.clients',
+      childrenSelectors: ['.section__label', '.section__title', 'li', 'p'],
+      toggleClass: 'section'
+    });
+    tweenElements({
+      triggerSelector: '.contacts',
+      childrenSelectors: ['.section__label', '.section__title', '.contacts-details__item'],
+      toggleClass: 'section'
+    });
   }
 
   if (isHasClass('project')) {
-    var passProjectLink = function (callback) {
+    var passProjectLink = function(callback) {
       $('.project-section a').each(function() {
         var container = this.parentElement;
 
@@ -155,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
 
-    passProjectLink(function () {
-      $('.project-gallery').each(function () {
+    passProjectLink(function() {
+      $('.project-gallery').each(function() {
         var key = (Math.random() + '').slice(2);
         var name = 'project-gallery';
-        $(this).children('a').each(function () {
+        $(this).children('a').each(function() {
           this.dataset.fancybox = name + key;
         });
       });
@@ -168,63 +128,28 @@ document.addEventListener('DOMContentLoaded', function () {
     var projectHeadTween = new TimelineMax();
 
     projectHeadTween
-        .from('.project-head__title', 0.8, {
-          y: -100,
-          opacity: 0
-        }, '+=0.35')
-        .from('.project-head__text', 0.7, {
-          y: 90,
-          opacity: 0,
-          ease: Back.easeOut.config(1.2)
-        }, '+=0.05')
-        .from('.project-head__link-case', 0.7, {
-          y: 70,
-          opacity: 0,
-          ease: Back.easeOut.config(1.7)
-        }, '-=0.4');
+      .from('.project-head__title', 0.8, {
+        y: -100,
+        opacity: 0
+      }, '+=0.35')
+      .from('.project-head__text', 0.7, {
+        y: 90,
+        opacity: 0,
+        ease: Back.easeOut.config(1.2)
+      }, '+=0.05')
+      .from('.project-head__link-case', 0.7, {
+        y: 70,
+        opacity: 0,
+        ease: Back.easeOut.config(1.7)
+      }, '-=0.4');
 
-    var tweenProjectSection = function () {
-      var projectSections = document.querySelectorAll('.project-section');
 
-      Array.from(projectSections).forEach(function (projectSection) {
-        var projectContentTween = new TimelineMax();
-        var label = projectSection.querySelector('.project-section__label');
-        var title = projectSection.querySelector('.project-section__title');
-        var p = projectSection.querySelectorAll('p');
-        var reviewAside = projectSection.querySelector('.project-review__aside');
 
-        if (label) {
-          projectContentTween
-              .from(label, 0.4, labelAnimation);
-        }
-        if (title) {
-          projectContentTween
-              .from(title, 0.4, titleAnimation);
-        }
-        if (p.length) {
-          projectContentTween
-              .staggerFrom(p, 0.45, {opacity: 0, y: 50, ease: Back.easeOut.config(1.7)}, 0.3);
-        }
-        if (reviewAside) {
-          projectContentTween
-              .from(reviewAside, 0.4, titleAnimation);
-        }
-
-        var scene = new ScrollMagic.Scene({
-          triggerElement: projectSection,
-          offset: SCENE_OFFSET
-        })
-            .setTween(projectContentTween)
-            .setClassToggle(label, 'project-section__label--triggered')
-            .addTo(controller);
-
-        if ((location.hostname === 'localhost')) {
-          scene.addIndicators();
-        }
-      });
-    };
-
-    tweenProjectSection();
+    tweenElements({
+      triggerSelector: '.project-section',
+      childrenSelectors: ['.project-section__label', '.project-section__title', 'p', 'p > a', '.project-review__aside'],
+      toggleClass: 'project-section'
+    });
   }
 
 
@@ -236,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var scrollPage = 0;
 
   function toggleTogglerIcons() {
-    Array.prototype.forEach.call(navTogglerIconItems, function (item) {
+    Array.prototype.forEach.call(navTogglerIconItems, function(item) {
       item.classList.toggle('nav-toggler__icon--hidden');
     });
   }
@@ -256,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (navToggler) {
-    navToggler.addEventListener('click', function (event) {
+    navToggler.addEventListener('click', function(event) {
       event.preventDefault();
       if (!siteCover.classList.contains('site-cover--opened')) {
         openSiteCover();
@@ -268,7 +193,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   var mainHeaderLogo = document.querySelector('.main-header__logo');
-  window.addEventListener('scroll', function () {
+  window.addEventListener('scroll', function() {
     if (pageYOffset !== 0) {
       mainHeaderLogo.classList.add('main-header__logo--mini');
     } else {
@@ -292,7 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (device.mobile() || device.tablet()) {
       clinetsListWrapper.classList.add('clients__list-wrapper--scroll');
     } else if (device.desktop()) {
-      imagesLoaded(clients, function () {
+      imagesLoaded(clients, function() {
         bodyWidth = document.body.clientWidth;
         clinetsList = clients.querySelector('.clients__list');
         clinetsListWidth = clinetsList.scrollWidth;
@@ -313,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         window.addEventListener('mousemove', moveDocumentHandler, false);
-        window.addEventListener('resize', function () {
+        window.addEventListener('resize', function() {
           calcValuesWidths();
         });
       });
@@ -329,18 +254,18 @@ document.addEventListener('DOMContentLoaded', function () {
     var pagerWorkSlides = favoritWorks.querySelector('.favorit-works__pager-number--all');
     var slidesCount = 0;
 
-    var recalcWorkSlidesInit = function (slick) {
+    var recalcWorkSlidesInit = function(slick) {
       pagerCurrentWorkSlide.textContent = slick.currentSlide + 1;
       slidesCount = slick.slideCount;
       pagerWorkSlides.textContent = slidesCount;
     };
 
-    var recalcWorkSlidesChange = function (currentSlide, nextSlide) {
+    var recalcWorkSlidesChange = function(currentSlide, nextSlide) {
       pagerCurrentWorkSlide.textContent = nextSlide + 1;
       pagerWorkSlides.textContent = slidesCount;
     };
 
-    var changeColorControls = function (slick, currentSlide, nextSlide) {
+    var changeColorControls = function(slick, currentSlide, nextSlide) {
       var currentSlideElement = slick.$slides[nextSlide];
       var workSlide = currentSlideElement.querySelector('.favorit-work-slide');
 
@@ -353,13 +278,12 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     };
 
-    $(favoritWorksSlider).on('init', function (event, slick) {
+    $(favoritWorksSlider).on('init', function(event, slick) {
       recalcWorkSlidesInit(slick);
       changeColorControls(slick, 0, 0);
-      // AOS.refresh();
     });
 
-    $(favoritWorksSlider).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+    $(favoritWorksSlider).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
       recalcWorkSlidesChange(currentSlide, nextSlide);
       changeColorControls(slick, currentSlide, nextSlide);
       favoritWorksTween.restart();
