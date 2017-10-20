@@ -39,13 +39,12 @@
 }
 
 .main-header__logo {
-  // transform-origin: 0;
-  // transform: scale(1);
-  // transition: ($duration * 2);
-  // will-change: transform;
+  transform-origin: 0;
+  transform: scale(1);
+  transition: ($duration * 2);
+  will-change: transform;
 }
 
 .main-header__logo--mini {
-  // transform: scale(0.56);
-  width: 80px;
+  transform: scale(0.56);
 }
