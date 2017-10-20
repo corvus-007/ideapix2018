@@ -7,10 +7,18 @@ document.addEventListener('DOMContentLoaded', function () {
     return document.body.classList.contains(classString);
   }
 
-  var titleAnimation = labelAnimation;
+  var SCENE_OFFSET = -160;
   var controller = new ScrollMagic.Controller();
+  var animations = {
+    tweeen1: {
+      opacity: 0,
+      y: 50
+    }
+  };
+  var labelAnimation = animations.tweeen1;
+  var titleAnimation = animations.tweeen1;
 
-  if (isHasClass('home') || isHasClass('project')) {
+  if (isHasClass('home')) {
     var favoritWorksTween = new TimelineMax();
 
     favoritWorksTween
@@ -28,13 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
           opacity: 0,
           ease: Back.easeOut.config(1.7)
         }, '-=0.45');
-  }
-
-  if (isHasClass('home')) {
-    var labelAnimation = {
-      opacity: 0,
-      y: 40
-    };
 
     var tweenSectionFavoritWorks = function () {
       var favoritWorks = document.querySelector('.favorit-works');
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var scene = new ScrollMagic.Scene({
         triggerElement: favoritWorks,
-        offset: -170
+        offset: SCENE_OFFSET
       })
           .setTween(clientsTween)
           .setClassToggle(label, 'section__label--triggered')
@@ -67,11 +68,11 @@ document.addEventListener('DOMContentLoaded', function () {
       missionTween
           .from(label, 0.4, labelAnimation)
           .from(title, 0.4, titleAnimation)
-          .staggerFrom('.mission__item', 0.4, {opacity: 0, scale: 1.4}, 0.15);
+          .staggerFrom('.mission__item', 0.4, {opacity: 0, scale: 1.2, x: 80}, 0.15);
 
       var scene = new ScrollMagic.Scene({
         triggerElement: mission,
-        offset: -170
+        offset: SCENE_OFFSET
       })
           .setTween(missionTween)
           .setClassToggle(label, 'section__label--triggered')
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var scene = new ScrollMagic.Scene({
         triggerElement: clients,
-        offset: -170
+        offset: SCENE_OFFSET
       })
           .setTween(clientsTween)
           .setClassToggle(label, 'section__label--triggered')
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var scene = new ScrollMagic.Scene({
         triggerElement: contacts,
-        offset: -170
+        offset: SCENE_OFFSET
       })
           .setTween(clientsTween)
           .setClassToggle(label, 'section__label--triggered')
@@ -135,33 +136,95 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   if (isHasClass('project')) {
+    var passProjectLink = function (callback) {
+      $('.project-section a').each(function() {
+        var container = this.parentElement;
 
-    var tweenProjectSection = function () {
-      var projectSections = document.querySelectorAll('.projecct-section');
+        if ($(this).children('img').length) {
+          this.dataset.fancybox = '';
+          this.dataset.type = 'image';
 
-      Array.from(projectSections).forEach(function (section) {
-        var label = section.querySelector('.section__label');
-        var title = section.querySelector('.section__title');
-        var p = section.querySelectorAll('p');
+          if (!container.classList.contains('project-gallery')) {
+            container.classList.add('project-gallery');
+          }
+        }
       });
 
-      var clientsTween = new TimelineMax();
-
-      clientsTween
-          .from(label, 0.4, labelAnimation)
-
-      var scene = new ScrollMagic.Scene({
-        triggerElement: projectSection,
-        offset: -170
-      })
-          .setTween(clientsTween)
-          .setClassToggle(label, 'section__label--triggered')
-          .addTo(controller);
-
-      if ((location.hostname === 'localhost')) {
-        scene.addIndicators();
+      if (typeof callback === 'function') {
+        callback();
       }
     };
+
+    passProjectLink(function () {
+      $('.project-gallery').each(function () {
+        var key = (Math.random() + '').slice(2);
+        var name = 'project-gallery';
+        $(this).children('a').each(function () {
+          this.dataset.fancybox = name + key;
+        });
+      });
+    });
+
+    var projectHeadTween = new TimelineMax();
+
+    projectHeadTween
+        .from('.project-head__title', 0.8, {
+          y: -100,
+          opacity: 0
+        }, '+=0.35')
+        .from('.project-head__text', 0.7, {
+          y: 90,
+          opacity: 0,
+          ease: Back.easeOut.config(1.2)
+        }, '+=0.05')
+        .from('.project-head__link-case', 0.7, {
+          y: 70,
+          opacity: 0,
+          ease: Back.easeOut.config(1.7)
+        }, '-=0.4');
+
+    var tweenProjectSection = function () {
+      var projectSections = document.querySelectorAll('.project-section');
+
+      Array.from(projectSections).forEach(function (projectSection) {
+        var projectContentTween = new TimelineMax();
+        var label = projectSection.querySelector('.project-section__label');
+        var title = projectSection.querySelector('.project-section__title');
+        var p = projectSection.querySelectorAll('p');
+        var reviewAside = projectSection.querySelector('.project-review__aside');
+
+        if (label) {
+          projectContentTween
+              .from(label, 0.4, labelAnimation);
+        }
+        if (title) {
+          projectContentTween
+              .from(title, 0.4, titleAnimation);
+        }
+        if (p.length) {
+          projectContentTween
+              .staggerFrom(p, 0.45, {opacity: 0, y: 50, ease: Back.easeOut.config(1.7)}, 0.3);
+        }
+        if (reviewAside) {
+          projectContentTween
+              .from(reviewAside, 0.4, titleAnimation);
+        }
+
+        var scene = new ScrollMagic.Scene({
+          triggerElement: projectSection,
+          offset: SCENE_OFFSET
+        })
+            .setTween(projectContentTween)
+            .setClassToggle(label, 'project-section__label--triggered')
+            .addTo(controller);
+
+        if ((location.hostname === 'localhost')) {
+          scene.addIndicators();
+        }
+      });
+    };
+
+    tweenProjectSection();
   }
 
 
@@ -245,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
         function moveDocumentHandler(event) {
           mouseX = event.clientX;
           k = mouseX / bodyWidth;
-          result = k * (clinetsListWidth - bodyWidth);
+          result = k * (clinetsListWidth - bodyWidth + 50);
           clinetsList.style.transform = 'translateX(-' + result + 'px)';
         }
 
