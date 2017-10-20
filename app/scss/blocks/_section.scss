@@ -32,12 +32,6 @@
     transition: transform $duration ($duration * 2);
   }
 
-  &--triggered {
-    &::before {
-      transform: scaleX(1);
-    }
-  }
-
   @include mq-min(992px) {
     &::before {
       position: absolute;
@@ -46,6 +40,12 @@
       margin-top: auto;
       margin-bottom: auto;
     }
+  }
+}
+
+.section--triggered .section__label {
+  &::before {
+    transform: scaleX(1);
   }
 }
 
