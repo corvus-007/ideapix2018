@@ -161,6 +161,61 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
+  // Filter
+
+  function getHashFilter() {
+    var hash = location.hash;
+    // get filter=filterName
+    var matches = location.hash.match(/filter=([^&]+)/i);
+    var hashFilter = matches && matches[1];
+
+    if (!hashFilter) {
+      return '*';
+    }
+    return hashFilter && decodeURIComponent(hashFilter);
+  }
+
+  var $filter = $('.filter');
+
+  if ($filter.length) {
+    var $grid = $('.cards');
+    var $filters = $filter.on('click', 'a', function(event) {
+      event.preventDefault();
+      var filterAttr = $(this).data('filter');
+      console.log(filterAttr)
+        // set filter in hash
+      location.hash = 'filter=' + encodeURIComponent(filterAttr);
+    });
+
+    var isIsotopeInit = false;
+    onHashchange();
+  }
+
+  // bind filter button click
+  function onHashchange() {
+    var hashFilter = getHashFilter();
+    hashFilter = (hashFilter != '*') ? hashFilter : 'all';
+    if (!hashFilter && isIsotopeInit) {
+      return;
+    }
+    isIsotopeInit = true;
+    // filter isotope
+    $grid.isotope({
+      itemSelector: '.all',
+      filter: '.' + hashFilter
+    });
+    // set selected class on button
+    if (hashFilter) {
+      $filters.find('.filter__options-item--active').removeClass('filter__options-item--active');
+      $filters.find('[data-filter="' + hashFilter + '"]').closest('li').addClass('filter__options-item--active');
+    }
+  }
+
+  $(window).on('hashchange', onHashchange);
+  // trigger event handler to init Isotope
+
+
+
   // Toggle nav
 
   var navToggler = document.querySelector('.nav-toggler');
