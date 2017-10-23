@@ -6,8 +6,8 @@ var plumber = require('gulp-plumber');
 var postcss = require('gulp-postcss');
 var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync').create();
-var mqpacker = require('css-mqpacker');
-var minify = require('gulp-csso');
+// var mqpacker = require('css-mqpacker');
+// var minify = require('gulp-csso');
 var fileinclude = require('gulp-file-include');
 var rename = require('gulp-rename');
 var svgstore = require('gulp-svgstore');
@@ -41,7 +41,18 @@ gulp.task('style', function () {
 });
 
 gulp.task('plugins-js', function () {
-  gulp.src(['app/js/plugins/device.min.js', 'app/js/plugins/imagesloaded.pkgd.min.js', 'app/js/plugins/jquery.fancybox.js', 'app/js/plugins/slick.js', 'app/js/plugins/svg4everybody.js', 'app/js/plugins/ScrollMagic.min.js', 'app/js/plugins/TweenMax.min.js', 'app/js/plugins/animation.gsap.js', 'app/js/plugins/debug.addIndicators.min.js'])
+  gulp.src([
+    'app/js/plugins/device.min.js',
+    'app/js/plugins/imagesloaded.pkgd.min.js',
+    'app/js/plugins/jquery.fancybox.js',
+    'app/js/plugins/slick.js',
+    'app/js/plugins/svg4everybody.js',
+    'app/js/plugins/ScrollMagic.min.js',
+    'app/js/plugins/TweenMax.min.js',
+    'app/js/plugins/animation.gsap.js',
+    'app/js/plugins/isotope.pkgd.min.js',
+    'app/js/plugins/debug.addIndicators.min.js'
+  ])
     .pipe(concat('plugins.js'))
     .pipe(uglify())
     .pipe(gulp.dest('build/js'))
@@ -84,14 +95,12 @@ gulp.task('clean', function () {
 
 gulp.task('copy', function () {
   return gulp.src([
-      'app/fonts/**/*.{woff,woff2}',
-      // 'app/images/**',
-      //      'app/js/**',
-      'app/*.html'
-    ], {
-      base: 'app',
-      allowEmpty: true
-    })
+    'app/fonts/**/*.{woff,woff2}',
+    'app/*.html'
+  ], {
+    base: 'app',
+    allowEmpty: true
+  })
     .pipe(gulp.dest('build'));
 });
 
@@ -110,7 +119,7 @@ gulp.task('build', function (fn) {
 
 gulp.task('serve', function () {
   browserSync.init({
-    server: "./build"
+    server: './build'
   });
 
   gulp.watch('app/scss/**/*.scss', function () {
