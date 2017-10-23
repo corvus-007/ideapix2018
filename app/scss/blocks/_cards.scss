@@ -2,5 +2,10 @@
   @include mq-min(568px) {
     display: flex;
     flex-wrap: wrap;
+    margin-right: -20px;
+  }
+
+  @include mq-min(992px) {
+    margin-right: -2rem;
   }
 }
