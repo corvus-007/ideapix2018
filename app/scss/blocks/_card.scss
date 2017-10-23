@@ -3,59 +3,40 @@
   flex-direction: column;
   margin-bottom: 2rem;
   font-size: rem(13);
-  border: 1px solid $gray-245;
   box-sizing: border-box;
+
+  @include mq-min(568px) {
+    width: calc(100% / 2);
+    padding-right: 2rem;
+  }
+
+  @include mq-min(880px) {
+    width: calc(100% / 3);
+  }
+
+  @include mq-min(992px) {
+    width: calc(100% / 2);
+  }
+
+  @include mq-min(1280px) {
+    width: calc(100% / 3);
+  }
+
+  @include mq-min(1500px) {
+    width: calc(100% / 4);
+  }
+}
+
+.card__inner {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $gray-245;
   box-shadow: 10px 10px $gray-245;
-  transition: ($duration * 1.5);
+  transition: ($duration * 2);
 
   &:hover {
     border-color: $secondary-color-2;
     box-shadow: 10px 10px $secondary-color-2;
-  }
-
-  @include mq-range(568px, 879px) {
-    width: calc((100% - (1 * 2rem)) / 2);
-    margin-right: 2rem;
-
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
-  }
-
-  @include mq-range(880px, 991px) {
-    width: calc((100% - (2 * 2rem)) / 3);
-    margin-right: 2rem;
-
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
-  }
-
-  @include mq-range(992px, 1279px) {
-    width: calc((100% - (1 * 2rem)) / 2);
-    margin-right: 2rem;
-
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
-  }
-
-  @include mq-range(1280px, 1499px) {
-    width: calc((100% - (2 * 2rem)) / 3);
-    margin-right: 2rem;
-
-    &:nth-child(3n) {
-      margin-right: 0;
-    }
-  }
-
-  @include mq-min(1500px) {
-    width: calc((100% - (3 * 2rem)) / 4);
-    margin-right: 2rem;
-
-    &:nth-child(4n) {
-      margin-right: 0;
-    }
   }
 }
 
