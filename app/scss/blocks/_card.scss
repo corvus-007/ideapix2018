@@ -1,0 +1,152 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  font-size: rem(13);
+  border: 1px solid $gray-245;
+  box-sizing: border-box;
+  box-shadow: 10px 10px $gray-245;
+  transition: ($duration * 1.5);
+
+  &:hover {
+    border-color: $secondary-color-2;
+    box-shadow: 10px 10px $secondary-color-2;
+  }
+
+  @include mq-range(568px, 879px) {
+    width: calc((100% - (1 * 2rem)) / 2);
+    margin-right: 2rem;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mq-range(880px, 991px) {
+    width: calc((100% - (2 * 2rem)) / 3);
+    margin-right: 2rem;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mq-range(992px, 1279px) {
+    width: calc((100% - (1 * 2rem)) / 2);
+    margin-right: 2rem;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mq-range(1280px, 1499px) {
+    width: calc((100% - (2 * 2rem)) / 3);
+    margin-right: 2rem;
+
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+  }
+
+  @include mq-min(1500px) {
+    width: calc((100% - (3 * 2rem)) / 4);
+    margin-right: 2rem;
+
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+  }
+}
+
+.card__head {
+
+}
+
+.card__image-box {
+  @include make-fit-object();
+}
+
+.card__body {
+  margin-bottom: rem(5);
+  padding: rem(20);
+  padding-bottom: 0;
+}
+
+.card__title {
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+  font-family: $secondary-font;
+  text-transform: uppercase;
+}
+
+.card__description {
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.card__foot {
+  padding: rem(20);
+
+  @include mq-min(736px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include mq-range(400px, 567px) {
+    @media (orientation: portrait) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}
+
+.card__price {
+
+  @include mq-max(735px) {
+    margin-bottom: 1rem;
+  }
+
+  @include mq-max(667px) {
+    display: flex;
+    align-items: baseline;
+  }
+
+  @include mq-range(400px, 567px) {
+    @media (orientation: portrait) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.card__price-old {
+  @include mq-max(666px) {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    order: 1;
+    margin-left: 1rem;
+  }
+
+  @include mq-min(413px) {
+
+  }
+}
+
+.card__actions {
+
+}
+
+.card__button {
+  @include make-button();
+  @include --button-small();
+  @include --button-black();
+
+  min-width: rem(120);
+  width: 100%;
+}
+
