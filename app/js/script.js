@@ -1,38 +1,52 @@
 'use strict';
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   svg4everybody();
-
-  function isHasClass(classString) {
-    return document.body.classList.contains(classString);
-  }
 
   var SCENE_OFFSET = -160;
   var controller = new ScrollMagic.Controller();
   var animations = {
-    tweeen1: {
+    tween1: {
       opacity: 0,
-      y: 50
+      y: 100
     }
   };
-  var labelAnimation = animations.tweeen1;
-  var titleAnimation = animations.tweeen1;
 
-  var tweenElements = function(config) {
+  var isBodyHasClass = function (classString) {
+    return document.body.classList.contains(classString);
+  };
+
+  var createPageGallery = function (callback) {
+    $('.page-section a').each(function () {
+      var container = this.parentElement;
+
+      if ($(this).children('img').length) {
+        this.dataset.fancybox = '';
+        this.dataset.type = 'image';
+
+        if (!container.classList.contains('page-gallery')) {
+          container.classList.add('page-gallery');
+        }
+      }
+    });
+
+    if (typeof callback === 'function') {
+      callback();
+    }
+  };
+
+  var tweenElements = function (config) {
     var triggerSelector = config.triggerSelector;
     var childrenSelectors = config.childrenSelectors;
     var toggleClass = config.toggleClass;
 
     var triggerBoxes = document.querySelectorAll(triggerSelector);
 
-    Array.from(triggerBoxes).forEach(function(triggerBox) {
+    Array.from(triggerBoxes).forEach(function (triggerBox) {
       var animateElements = triggerBox.querySelectorAll(childrenSelectors.join(', '));
       var tl = new TimelineMax();
 
-      tl.staggerFrom(animateElements, 0.45, {
-        opacity: 0,
-        y: 100
-      }, 0.25);
+      tl.staggerFrom(animateElements, 0.45, animations.tween1, 0.25);
 
       var scene = new ScrollMagic.Scene({
           triggerElement: triggerBox,
@@ -49,11 +63,19 @@ document.addEventListener('DOMContentLoaded', function() {
         scene.addIndicators();
       }
     });
-
-
   };
 
-  if (isHasClass('home')) {
+  var addGalleryAtrs = function (gallery) {
+    var key = (Math.random() + '').slice(2);
+    var name = 'page-gallery';
+    var galleryLinks = gallery.querySelectorAll('a');
+
+    Array.from(galleryLinks).forEach(function (link) {
+      link.dataset.fancybox = name + key;
+    });
+  };
+
+  if (isBodyHasClass('home')) {
     var favoritWorksTween = new TimelineMax();
 
     favoritWorksTween
@@ -71,7 +93,6 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0,
         ease: Back.easeOut.config(1.7)
       }, '-=0.45');
-
 
     tweenElements({
       triggerSelector: '.favorit-works',
@@ -95,34 +116,11 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  if (isHasClass('project')) {
-    var passProjectLink = function(callback) {
-      $('.project-section a').each(function() {
-        var container = this.parentElement;
+  if (isBodyHasClass('project')) {
+    createPageGallery(function () {
+      var pageGalleries = document.querySelectorAll('.page-gallery');
 
-        if ($(this).children('img').length) {
-          this.dataset.fancybox = '';
-          this.dataset.type = 'image';
-
-          if (!container.classList.contains('project-gallery')) {
-            container.classList.add('project-gallery');
-          }
-        }
-      });
-
-      if (typeof callback === 'function') {
-        callback();
-      }
-    };
-
-    passProjectLink(function() {
-      $('.project-gallery').each(function() {
-        var key = (Math.random() + '').slice(2);
-        var name = 'project-gallery';
-        $(this).children('a').each(function() {
-          this.dataset.fancybox = name + key;
-        });
-      });
+      Array.from(pageGalleries).forEach(addGalleryAtrs);
     });
 
     var projectHeadTween = new TimelineMax();
@@ -142,13 +140,23 @@ document.addEventListener('DOMContentLoaded', function() {
         opacity: 0,
         ease: Back.easeOut.config(1.7)
       }, '-=0.4');
+  }
 
+  if (isBodyHasClass('page')) {
+    var pageHeadTween = new TimelineMax();
 
+    pageHeadTween
+      .from('.page-head__title', 0.8, {
+        y: -100,
+        opacity: 0
+      }, '+=0.35');
+  }
 
+  if (isBodyHasClass('project') || isBodyHasClass('page')) {
     tweenElements({
-      triggerSelector: '.project-section',
-      childrenSelectors: ['.project-section__label', '.project-section__title', 'p', 'p > a', '.project-review__aside'],
-      toggleClass: 'project-section'
+      triggerSelector: '.page-section',
+      childrenSelectors: ['.page-section__label', '.page-section__title', 'p', 'p > a', '.project-review__aside'],
+      toggleClass: 'page-section'
     });
   }
 
@@ -161,7 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var scrollPage = 0;
 
   function toggleTogglerIcons() {
-    Array.prototype.forEach.call(navTogglerIconItems, function(item) {
+    Array.prototype.forEach.call(navTogglerIconItems, function (item) {
       item.classList.toggle('nav-toggler__icon--hidden');
     });
   }
@@ -181,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   if (navToggler) {
-    navToggler.addEventListener('click', function(event) {
+    navToggler.addEventListener('click', function (event) {
       event.preventDefault();
       if (!siteCover.classList.contains('site-cover--opened')) {
         openSiteCover();
@@ -193,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   var mainHeaderLogo = document.querySelector('.main-header__logo');
-  window.addEventListener('scroll', function() {
+  window.addEventListener('scroll', function () {
     if (pageYOffset !== 0) {
       mainHeaderLogo.classList.add('main-header__logo--mini');
     } else {
@@ -217,7 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (device.mobile() || device.tablet()) {
       clinetsListWrapper.classList.add('clients__list-wrapper--scroll');
     } else if (device.desktop()) {
-      imagesLoaded(clients, function() {
+      imagesLoaded(clients, function () {
         bodyWidth = document.body.clientWidth;
         clinetsList = clients.querySelector('.clients__list');
         clinetsListWidth = clinetsList.scrollWidth;
@@ -238,7 +246,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         window.addEventListener('mousemove', moveDocumentHandler, false);
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
           calcValuesWidths();
         });
       });
@@ -254,18 +262,18 @@ document.addEventListener('DOMContentLoaded', function() {
     var pagerWorkSlides = favoritWorks.querySelector('.favorit-works__pager-number--all');
     var slidesCount = 0;
 
-    var recalcWorkSlidesInit = function(slick) {
+    var recalcWorkSlidesInit = function (slick) {
       pagerCurrentWorkSlide.textContent = slick.currentSlide + 1;
       slidesCount = slick.slideCount;
       pagerWorkSlides.textContent = slidesCount;
     };
 
-    var recalcWorkSlidesChange = function(currentSlide, nextSlide) {
+    var recalcWorkSlidesChange = function (currentSlide, nextSlide) {
       pagerCurrentWorkSlide.textContent = nextSlide + 1;
       pagerWorkSlides.textContent = slidesCount;
     };
 
-    var changeColorControls = function(slick, currentSlide, nextSlide) {
+    var changeColorControls = function (slick, currentSlide, nextSlide) {
       var currentSlideElement = slick.$slides[nextSlide];
       var workSlide = currentSlideElement.querySelector('.favorit-work-slide');
 
@@ -278,12 +286,12 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     };
 
-    $(favoritWorksSlider).on('init', function(event, slick) {
+    $(favoritWorksSlider).on('init', function (event, slick) {
       recalcWorkSlidesInit(slick);
       changeColorControls(slick, 0, 0);
     });
 
-    $(favoritWorksSlider).on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    $(favoritWorksSlider).on('beforeChange', function (event, slick, currentSlide, nextSlide) {
       recalcWorkSlidesChange(currentSlide, nextSlide);
       changeColorControls(slick, currentSlide, nextSlide);
       favoritWorksTween.restart();
