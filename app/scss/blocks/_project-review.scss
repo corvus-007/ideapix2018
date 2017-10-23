@@ -29,13 +29,13 @@
 
   @include mq-min(768px) {
     margin-bottom: 0;
-    // width: calc(100% / 3 * 2);
+    width: calc(100% / 3 * 2);
   }
 }
 
 
 .project-review--inverse blockquote {
-  color: #b4c4d1;
+  color: $secondary-color-2;
 }
 
 .project-review__aside {
