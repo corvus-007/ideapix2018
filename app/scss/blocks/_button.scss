@@ -63,25 +63,41 @@
   }
 }
 
-@mixin make-button-color-default() {
-  color: $black-color;
+@mixin --button-action() {
+  color: $accent-color;
 
   &:hover,
   &:focus {
     color: $white-color;
     border-color: transparent;
-    background-color: $black-color;
+    background-color: $accent-color;
   }
 
   &:active {
-    background-color: mix($base-color, $secondary-color, 15%);
+    background-color: $accent-color;
+  }
+}
+
+@mixin --button-submit() {
+  color: #00B8A9;
+
+  &:hover,
+  &:focus {
+    color: $white-color;
+    border-color: transparent;
+    background-color: #00B8A9;
+  }
+
+  &:active {
+    background-color: #00B8A9;
   }
 }
 
 
+
 .button {
   @include make-button();
-  @include make-button-color-default();
+  @include --button-action();
 
   &--small {
     @include --button-small();
