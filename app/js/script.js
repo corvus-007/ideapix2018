@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
       tl.staggerFrom(animateElements, 0.45, animations.tween1, 0.25);
 
       var scene = new ScrollMagic.Scene({
-          triggerElement: triggerBox,
-          offset: SCENE_OFFSET
-        })
+        triggerElement: triggerBox,
+        offset: SCENE_OFFSET
+      })
         .setTween(tl)
         .addTo(controller);
 
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (isBodyHasClass('project') || isBodyHasClass('page')) {
     tweenElements({
       triggerSelector: '.page-section',
-      childrenSelectors: ['.page-section__label', '.page-section__title', 'p', 'p > a', '.project-review__aside'],
+      childrenSelectors: ['.page-section__label', '.page-section__title', 'p', '.page-gallery > a', 'blockquote', '.project-review__aside'],
       toggleClass: 'page-section'
     });
   }
@@ -179,16 +179,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if ($filter.length) {
     var $grid = $('.cards');
-    var $filters = $filter.on('click', 'a', function(event) {
+    var $filters = $filter.on('click', 'a', function (event) {
       event.preventDefault();
       var filterAttr = $(this).data('filter');
-      console.log(filterAttr)
-        // set filter in hash
+      // set filter in hash
       location.hash = 'filter=' + encodeURIComponent(filterAttr);
     });
 
     var isIsotopeInit = false;
     onHashchange();
+
+    $(window).on('hashchange', onHashchange);
   }
 
   // bind filter button click
@@ -211,11 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  $(window).on('hashchange', onHashchange);
-  // trigger event handler to init Isotope
-
-
-
+  
   // Toggle nav
 
   var navToggler = document.querySelector('.nav-toggler');
