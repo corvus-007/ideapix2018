@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Страница одного шаблона</title>
+  <link rel="stylesheet" href="https://forms.amocrm.ru/forms/assets/css/v2/iframe_extended.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page">
+  <!-- <div class="site-wrapper"> -->
+    @@include('blocks/main-header.html')
+
+    <div class="page-head">
+      <div class="page-head__inner container">
+        <p>Главная / Витрина шаблонов / Шаблон</p>
+        <h1 class="page-head__title">
+          Интернет-магазин Готовых сайтов
+        </h1>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="container">
+        <div class="product-wrapper">
+          <div class="product-wrapper__area-left">
+            <div class="product-image">
+              <a href="https://images.unsplash.com/photo-1504890231393-71b0d15a05f4?w=2000&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" data-fancybox="gallery" data-type="image">
+                <img src="https://images.unsplash.com/photo-1504890231393-71b0d15a05f4?w=2000&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="">
+              </a>
+            </div>
+            <!-- <div class="product-gallery">
+              <div>
+                <a href="https://images.unsplash.com/photo-1478033394151-c931d5a4bdd6?w=1268&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" data-fancybox="gallery" data-type="image">
+                  <img src="https://images.unsplash.com/photo-1478033394151-c931d5a4bdd6?w=1268&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="">
+                </a>
+              </div>
+              <div>
+                <a href="https://images.unsplash.com/photo-1498925008800-019c7d59d903?w=1268&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" data-fancybox="gallery" data-type="image">
+                  <img src="https://images.unsplash.com/photo-1498925008800-019c7d59d903?w=1268&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" alt="">
+                </a>
+              </div>
+            </div> -->
+          </div>
+          <div class="product-wrapper__area-right">
+            <div class="product-summary">
+              <form class="product-order-form" action="" method="POST">
+                <div class="product-order">
+                  <div class="product-order__services product-services">
+                    <div class="product-service product-service--main">
+                      <b class="product-service__name">
+                        Заказать этот сайт
+                      </b>
+                      <span class="product-service__price price">
+                        <del><span class="woocommerce-Price-amount amount">40 400&nbsp;<span class="woocommerce-Price-currencySymbol">₽</span></span></del>
+                        <ins><span class="woocommerce-Price-amount amount">28 170&nbsp;<span class="woocommerce-Price-currencySymbol">₽</span></span></ins>
+                      </span>
+                    </div>
+                    <div class="product-service product-service--included">
+                      <span class="product-service__name">
+                        Лицензия на CMS 1С-Битрикс
+                      </span>
+                      <span class="product-service__price">
+                        включено
+                      </span>
+                    </div>
+                    <div class="product-service product-service--included">
+                      <span class="product-service__name">
+                        Настройка и установка
+                      </span>
+                      <span class="product-service__price">
+                        включено
+                      </span>
+                    </div>
+                    <div class="product-service product-service--included">
+                      <span class="product-service__name">
+                        Консультации по привлечению клиентов
+                      </span>
+                      <span class="product-service__price">
+                        включено
+                      </span>
+                    </div>
+                    <div class="product-service">
+                      <span class="product-service__name">
+                        <input class="product-service__input" type="checkbox" id="stuffing" name="stuffing" value="0">
+                        <label class="product-service__label" for="stuffing">Наполнение вашей информацией</label>
+                      </span>
+                      <span class="product-service__price">
+                        + 32 982 ₽
+                      </span>
+                    </div>
+                    <div class="product-service">
+                      <span class="product-service__name">
+                        <input class="product-service__input" type="checkbox" id="development" name="development" value="0" >
+                        <label class="product-service__label" for="development">Разработка уникального дизайна</label>
+                      </span>
+                      <span class="product-service__price">
+                        + 98 946 ₽
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <!-- <div class="product-offer">
+                  <p>Закажи сейчас, и сайт будет запущен уже 9 Ноября !</p>
+                </div> -->
+                <div class="product-total">
+                  <span class="product-total__label">
+                    Сумма:
+                  </span>
+                  <div class="product-total__price price">
+                    <del><span class="woocommerce-Price-amount amount">40 400&nbsp;<span class="woocommerce-Price-currencySymbol">₽</span></span></del>
+                    <ins><span class="woocommerce-Price-amount amount">28 170&nbsp;<span class="woocommerce-Price-currencySymbol">₽</span></span></ins>
+                  </div>
+                </div>
+
+                <button class="product-summary__buy-button" type="submit">Приобрести сайт</button>
+              </form>
+              <a href="#" class="product-summary__demo-button">Смотреть демо</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-section">
+      <div class="page-section__header">
+        <div class="container">
+          <span class="page-section__label">Цели и задачи проекта</span>
+        </div>
+      </div>
+      <div class="container">
+        <div class="page-section__content page-section__content--hold-2-3">
+          <p>Новый дизайн сайта должен верно отражать новаторский дух компании и позицию лидера на рынке, демонстрировать широчайшие возможности компании с точки зрения как продукции, так и площадки для профессионального роста клиентов компании.</p>
+        </div>
+      </div>
+    </div>
+
+    @@include('blocks/main-footer.html')
+    @@include('blocks/popup-callback.html')
+    @@include('blocks/site-cover.html')
+  <!-- </div> -->
+  @@include('blocks/site-scripts.html')
+</body>
+</html>
