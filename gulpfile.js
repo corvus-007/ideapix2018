@@ -51,7 +51,8 @@ gulp.task('plugins-js', function () {
     'app/js/plugins/TweenMax.min.js',
     'app/js/plugins/animation.gsap.js',
     'app/js/plugins/isotope.pkgd.min.js',
-    'app/js/plugins/debug.addIndicators.min.js'
+    'app/js/plugins/debug.addIndicators.min.js',
+    'app/js/plugins/product.js'
   ])
     .pipe(concat('plugins.js'))
     .pipe(uglify())
