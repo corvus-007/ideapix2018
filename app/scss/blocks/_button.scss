@@ -79,17 +79,17 @@
 }
 
 @mixin --button-submit() {
-  color: #00B8A9;
+  color: $success-color;
 
   &:hover,
   &:focus {
     color: $white-color;
     border-color: transparent;
-    background-color: #00B8A9;
+    background-color: $success-color;
   }
 
   &:active {
-    background-color: #00B8A9;
+    background-color: $success-color;
   }
 }
 

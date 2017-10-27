@@ -5,27 +5,60 @@
   font-weight: 800;
   white-space: nowrap;
   line-height: normal;
+
+  del {
+    position: absolute;
+    bottom: 100%;
+    left: 1%;
+    font-size: em(14);
+    font-weight: 700;
+    color: $gray-107;
+    text-decoration: none;
+    user-select: none;
+
+    &::before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      transform: rotate(-15deg);
+      background-color: $danger-color;
+    }
+
+    @include mq-max(666px) {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      order: 1;
+      margin-left: 1rem;
+    }
+  }
+
+  ins {
+    text-decoration: none;
+  }
+
+  @include mq-max(735px) {
+    margin-bottom: 1rem;
+  }
+
+  @include mq-max(667px) {
+    display: flex;
+    align-items: baseline;
+  }
+
+  @include mq-range(400px, 567px) {
+    @media (orientation: portrait) {
+      margin-bottom: 0;
+    }
+  }
 }
 
-.price__old {
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: rem(14);
-  font-weight: 700;
-  color: $gray-107;
-
-  &::before {
-    content: "";
-    position: absolute;
-    height: 1px;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    margin: auto;
-    transform: rotate(-15deg);
-    background-color: $danger-color;
-  }
+.woocommerce-Price-currencySymbol {
+  font-family: "encode_sans_expanded", sans-serif;
 }

@@ -87,35 +87,7 @@
 
 .card__price {
 
-  @include mq-max(735px) {
-    margin-bottom: 1rem;
-  }
 
-  @include mq-max(667px) {
-    display: flex;
-    align-items: baseline;
-  }
-
-  @include mq-range(400px, 567px) {
-    @media (orientation: portrait) {
-      margin-bottom: 0;
-    }
-  }
-}
-
-.card__price-old {
-  @include mq-max(666px) {
-    position: relative;
-    bottom: auto;
-    left: auto;
-    transform: none;
-    order: 1;
-    margin-left: 1rem;
-  }
-
-  @include mq-min(413px) {
-
-  }
 }
 
 .card__actions {

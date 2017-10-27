@@ -1,17 +1,16 @@
-.page-gallery {
-  display: flex;
+.product-image {
+  &::before {
+    content: "";
+    display: block;
+    height: 10px;
+    background: #cfd8dc url("images/bar_small.svg") no-repeat left;
+    border-radius: 3px 3px 0 0;
+  }
 
   a {
-    @include make-fit-object(143, 201);
-
-    margin-right: 1rem;
-    flex-shrink: 0;
-    flex-basis: rem(143);
-    color: $gray-245;
-    border: 1px solid;
+    position: relative;
+    display: block;
     overflow: hidden;
-    box-shadow: 10px 10px;
-    transition: box-shadow ($duration * 2);
 
     &::after {
       content: "";
@@ -28,8 +27,6 @@
     }
 
     &:hover {
-      box-shadow: 0 0;
-
       &::after {
         opacity: 1;
         transform: scale(1);

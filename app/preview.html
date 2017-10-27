@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Превью шаблона</title>
+  <link rel="stylesheet" href="https://forms.amocrm.ru/forms/assets/css/v2/iframe_extended.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page preview">
+    @@include('blocks/preview-header.html')
+    <iframe class="preview-iframe" src="https://optimus.aspro-partner.ru/" frameborder="0"></iframe>
+
+    <script>
+      window.addEventListener('DOMContentLoaded', function () {
+        var previewHeader = document.querySelector('.preview-header');
+        var previewIframe = document.querySelector('.preview-iframe');
+        var previewHeaderHeight = previewHeader.offsetHeight;
+        previewIframe.style.height = (document.documentElement.clientHeight - previewHeaderHeight) + 'px';
+      });
+    </script>
+
+  @@include('blocks/site-scripts.html')
+</body>
+</html>

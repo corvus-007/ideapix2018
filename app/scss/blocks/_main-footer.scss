@@ -35,6 +35,7 @@
 .main-footer__nav-list {
   @include clear-list();
 
+  font-weight: 800;
   font-size: rem(13);
   font-family: $secondary-font;
   text-transform: uppercase;

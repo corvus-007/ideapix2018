@@ -1,0 +1,30 @@
+.tooltip {
+  position: relative;
+  display: inline-flex;
+  width: 1rem;
+  height: 1rem;
+  font-weight: 600;
+  vertical-align: middle;
+  border-radius: 50%;
+  background-color: $gray-245;
+  cursor: pointer;
+  transition: $duration;
+
+  &:hover {
+    background-color: #dfdfdf;
+  }
+
+  &::before {
+    content: "?";
+    margin: auto;
+  }
+}
+
+.tippy-popper {
+  max-width: 400px !important;
+  text-align: left;
+}
+
+.tippy-tooltip {
+  text-align: left;
+}

@@ -13,6 +13,7 @@
 // Vendors
 @import "vendors/slick";
 @import "vendors/jquery.fancybox.min";
+@import "vendors/tippy";
 
 // Blocks
 @import "blocks/button";
@@ -20,18 +21,18 @@
 @import "blocks/table";
 @import "blocks/popup";
 @import "blocks/section";
-@import "blocks/custom-ol";
-@import "blocks/custom-ul";
+@import "blocks/override-tippy";
+// @import "blocks/custom-ol";
+// @import "blocks/custom-ul";
 @import "blocks/main-header";
 @import "blocks/nav-toggler";
-// @import "blocks/hamburger-menu";
 @import "blocks/main-footer";
 @import "blocks/socials";
+@import "blocks/tooltip";
 @import "blocks/favorit-works";
 @import "blocks/favorit-work-slide";
 @import "blocks/mission";
 @import "blocks/clients";
-@import "blocks/format-content";
 @import "blocks/page";
 @import "blocks/page-head";
 @import "blocks/page-section";
@@ -43,10 +44,20 @@
 @import "blocks/price";
 @import "blocks/cards";
 @import "blocks/card";
+@import "blocks/product";
+@import "blocks/product-wrapper";
+@import "blocks/product-image";
+@import "blocks/product-summary";
+@import "blocks/product-order";
+@import "blocks/product-service";
+@import "blocks/product-total";
 // @import "blocks/archive-events";
 @import "blocks/site-cover";
 @import "blocks/main-nav";
 @import "blocks/secondary-nav";
+@import "blocks/preview";
+@import "blocks/preview-header";
+@import "blocks/preview-iframe";
 @import "blocks/contacts";
 @import "blocks/contacts-details";
 @import "blocks/contacts-address";

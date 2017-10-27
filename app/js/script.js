@@ -49,9 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
       tl.staggerFrom(animateElements, 0.45, animations.tween1, 0.25);
 
       var scene = new ScrollMagic.Scene({
-        triggerElement: triggerBox,
-        offset: SCENE_OFFSET
-      })
+          triggerElement: triggerBox,
+          offset: SCENE_OFFSET
+        })
         .setTween(tl)
         .addTo(controller);
 
@@ -160,9 +160,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // Tooltip
+  tippy(document.querySelectorAll('.tooltip'), {
+    position: 'right',
+    animation: 'scale',
+    arrowSize: 'small',
+    size: 'small',
+    arrow: true,
+    html: function (el) {
+      return el.getAttribute('tippy-html-template');
+    }
+  });
+
 
   // Filter
-
   function getHashFilter() {
     var hash = location.hash;
     // get filter=filterName
@@ -212,7 +223,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  
+
   // Toggle nav
 
   var navToggler = document.querySelector('.nav-toggler');
@@ -252,14 +263,19 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 
-  var mainHeaderLogo = document.querySelector('.main-header__logo');
-  window.addEventListener('scroll', function () {
-    if (pageYOffset !== 0) {
-      mainHeaderLogo.classList.add('main-header__logo--mini');
-    } else {
-      mainHeaderLogo.classList.remove('main-header__logo--mini');
-    }
-  });
+  var mainHeader = document.querySelector('.main-header');
+
+  if (mainHeader) {
+    var mainHeaderLogo = mainHeader.querySelector('.main-header__logo');
+    window.addEventListener('scroll', function () {
+      if (pageYOffset !== 0) {
+        mainHeaderLogo.classList.add('main-header__logo--mini');
+      } else {
+        mainHeaderLogo.classList.remove('main-header__logo--mini');
+      }
+    });
+  }
+
 
 
   var clients = document.querySelector('.clients');

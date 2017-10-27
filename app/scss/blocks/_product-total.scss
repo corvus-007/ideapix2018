@@ -1,0 +1,24 @@
+.product-total {
+  display: flex;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  padding-top: 2rem;
+  align-items: baseline;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: rem(20);
+  background-color: $gray-245;
+}
+
+.product-total__label {
+  margin-right: 1rem;
+}
+
+.product-total__price {
+  font-size: rem(24);
+  letter-spacing: 0.05em;
+
+  del {
+    font-size: em(12);
+  }
+}

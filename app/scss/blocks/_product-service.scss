@@ -1,0 +1,109 @@
+.product-service {
+  display: table-row;
+  font-size: rem(12);
+  line-height: normal;
+
+  &--main {
+    font-size: rem(14);
+    font-weight: 700;
+  }
+
+  &--paid {
+
+  }
+}
+
+.product-service__name {
+  position: relative;
+  display: table-cell;
+  padding-left: 1.2rem;
+  padding-right: 1rem;
+  padding-bottom: 1rem;
+}
+
+.product-service--main .product-service__name {
+  padding-left: 0;
+}
+
+.product-service--included .product-service__name {
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.1rem;
+    width: rem(5);
+    height: rem(12);
+    transform: rotate(40deg);
+    border: 2px solid $success-color;
+    border-left: transparent;
+    border-top: transparent;
+  }
+}
+
+.product-service:last-child .product-service__name {
+  padding-bottom: 0;
+}
+
+.product-service__input {
+  @include visuallyhidden();
+}
+
+.product-service__label {
+  display: block;
+  cursor: pointer;
+  user-select: none;
+  transition-property: color;
+  transition-duration: $duration * 2;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: -0.2rem;
+    top: 0.1rem;
+    width: rem(10);
+    height: rem(10);
+    transform: rotate(-180deg);
+    border: 2px solid;
+    border-color: $secondary-color-2;
+    transition-property: all, border-color;
+    transition-duration: $duration * 2, $duration * 1.5;
+  }
+}
+
+.product-service__input:hover + .product-service__label {
+  &::before {
+    border-color: $success-color;
+  }
+}
+
+.product-service__input:checked + .product-service__label {
+  color: $success-color;
+
+  &::before {
+    left: 0;
+    top: 0.1rem;
+    width: rem(5);
+    height: rem(12);
+    border-color: $success-color;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    transform: rotate(40deg);
+  }
+}
+
+.product-service__price {
+  position: relative;
+  display: table-cell;
+  // text-align: right;
+  white-space: nowrap;
+
+  del {
+    display: none;
+  }
+}
+
+.product-service__tooltip {
+  position: absolute;
+  left: 100%;
+  margin-left: 0.1rem;
+}

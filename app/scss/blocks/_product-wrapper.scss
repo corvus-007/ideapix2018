@@ -1,0 +1,36 @@
+.product-wrapper {
+  @include mq-range(768px, 992px) {
+    display: flex;
+  }
+
+  @include mq-min(1280px) {
+    display: flex;
+  }
+}
+
+.product-wrapper__area-left {
+  margin-bottom: 2rem;
+
+  @include mq-range(768px, 992px) {
+    width: calc(55% - 3rem);
+    margin-right: 3rem;
+    margin-bottom: 0;
+  }
+
+  @include mq-min(1280px) {
+    width: calc(100% / 3 * 2 - 3rem);
+    margin-right: 3rem;
+    margin-bottom: 0;
+  }
+}
+
+.product-wrapper__area-right {
+
+  @include mq-range(768px, 992px) {
+    width: 45%;
+  }
+
+  @include mq-min(1280px) {
+    width: calc(100% / 3 * 1);
+  }
+}
