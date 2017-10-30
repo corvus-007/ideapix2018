@@ -1,0 +1,11 @@
+.tippy-tooltip {
+  padding: 1.5rem;
+}
+
+.tippy-tooltip-content {
+  @include make-textual();
+
+  & > :first-child {
+    margin-top: 0;
+  }
+}
