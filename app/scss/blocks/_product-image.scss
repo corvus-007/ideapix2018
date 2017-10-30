@@ -1,8 +1,10 @@
 .product-image {
+  box-shadow: 0 0.5rem 1rem rgba($black-color, 0.3);
+
   &::before {
     content: "";
     display: block;
-    height: 10px;
+    height: 22px;
     background: #cfd8dc url("images/bar_small.svg") no-repeat left;
     border-radius: 3px 3px 0 0;
   }
@@ -10,6 +12,8 @@
   a {
     position: relative;
     display: block;
+    border-bottom: none;
+    text-decoration: none;
     overflow: hidden;
 
     &::after {
